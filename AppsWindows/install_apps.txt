@@ -1,0 +1,1 @@
+Get-Content apps.txt | ForEach-Object {winget install -e --id $_ -h }
