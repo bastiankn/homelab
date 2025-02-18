@@ -1,0 +1,39 @@
+version: "3.6"
+
+services:
+  adguardhome:
+    container_name: "adguardhome"
+    image: "adguard/adguardhome"
+    
+    command:
+      - "--no-check-update"
+      - "-c"
+      - "/opt/adguardhome/conf/AdGuardHome.yaml"
+      - "-w"
+      - "/opt/adguardhome/work"
+
+    entrypoint:
+      - "/opt/adguardhome/AdGuardHome"
+
+    ipc: "private"
+    network_mode: "bridge"
+    
+    ports:
+      - "3000:3000/tcp"
+      - "443:443/tcp"
+      - "443:443/udp"
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+
+    restart: "unless-stopped"
+
+    volumes:
+      - "adguard_config:/opt/adguardhome/conf"
+      - "adguard_data:/opt/adguardhome/work"
+
+volumes:
+  adguard_config:
+    external:
+  adguard_data:
+    external:

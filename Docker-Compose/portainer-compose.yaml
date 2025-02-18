@@ -1,0 +1,26 @@
+version: "3.6"
+
+services:
+  portainer:
+    container_name: "portainer"
+    image: "portainer/portainer-ce:2.21.5"
+    
+    entrypoint:
+      - "/portainer"
+
+    ipc: "private"
+    network_mode: "bridge"
+    
+    ports:
+      - "8000:8000/tcp"
+      - "9443:9443/tcp"
+
+    restart: "unless-stopped"
+
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "portainer_data:/data"
+
+volumes:
+  portainer_data:
+    external:
