@@ -34,6 +34,4 @@ services:
 
 volumes:
   adguard_config:
-    external:
   adguard_data:
-    external:
