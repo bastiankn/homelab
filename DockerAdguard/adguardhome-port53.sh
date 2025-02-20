@@ -4,7 +4,7 @@ docker pull adguard/adguardhome
 
 # Define the port to check
 PORT=53
-HOME_SERVER_IP="192.168.178.84"  # Replace with your AdGuard Home server's IP
+HOME_SERVER_IP="192.168.1.100"  # Replace with your AdGuard Home server's IP
 
 # Check if port 53 is in use using ss
 if sudo ss -tuln | grep ":$PORT" > /dev/null; then
@@ -17,14 +17,14 @@ if sudo ss -tuln | grep ":$PORT" > /dev/null; then
     echo "Service using port $PORT: $SERVICE (PID: $PID)"
     
     # Stop the service if it is running under systemd (common for DNS services like systemd-resolved or bind9)
-    if [ "$SERVICE" == "systemd-resolved" ]; then
+    if [[ "$SERVICE" == "systemd-resolved" ]]; then
         echo "Stopping systemd-resolved service..."
         sudo systemctl stop systemd-resolved
         sudo systemctl disable systemd-resolved
         sudo rm /etc/resolv.conf  # Remove the systemd-generated resolv.conf
         sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf  # Recreate symlink if needed
         echo "systemd-resolved service stopped and disabled."
-    elif [ "$SERVICE" == "bind9" ]; then
+    elif [[ "$SERVICE" == "bind9" ]]; then
         echo "Stopping bind9 service..."
         sudo systemctl stop bind9
         sudo systemctl disable bind9
