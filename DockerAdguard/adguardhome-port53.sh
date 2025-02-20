@@ -1,4 +1,6 @@
 #!/bin/bash
+# Install Pull Image because DNS Server removed
+docker pull adguard/adguard
 
 # Define the port to check
 PORT=53
