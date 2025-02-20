@@ -4,7 +4,7 @@ echo "Pulling AdGuard Home image..."
 docker pull adguard/adguardhome
 
 PORT=53
-HOME_SERVER_IP="192.168.1.100"  # Replace with your AdGuard Home server's IP
+HOME_SERVER_IP="192.168.178.84"  # Replace with your AdGuard Home server's IP
 
 echo "Checking if port $PORT is in use..."
 if sudo ss -tuln | grep ":$PORT" > /dev/null; then
