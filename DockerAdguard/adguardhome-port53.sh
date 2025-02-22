@@ -50,4 +50,6 @@ fi
 echo "Testing DNS resolution..."
 nslookup example.com
 
-echo "AdGuard Home setup complete. DNS should now be working."
+echo "AdGuard Home setup complete. DNS should now be working after restart."
+
+sudo reboot
