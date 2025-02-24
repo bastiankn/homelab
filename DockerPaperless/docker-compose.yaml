@@ -59,10 +59,10 @@ services:
     ports:
       - "8001:8000"
     volumes:
-      - /home/bastian/paperless-ngx/data:/usr/src/paperless/data
-      - /home/bastian/paperless-ngx/media:/usr/src/paperless/media
-      - /home/bastian/paperless-ngx/export:/usr/src/paperless/export
-      - /home/bastian/paperless-ngx/consume:/usr/src/paperless/consume
+      - ./paperless-ngx/data:/usr/src/paperless/data
+      - ./paperless-ngx/media:/usr/src/paperless/media
+      - ./paperless-ngx/export:/usr/src/paperless/export
+      - ./paperless-ngx/consume:/usr/src/paperless/consume
     #env_file: docker-compose.env
     env_file:
       - stack.env
