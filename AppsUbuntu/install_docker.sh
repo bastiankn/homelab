@@ -3,9 +3,8 @@ sudo apt update
 sudo apt upgrade
 
 # Qemu for better performsnce
-sudo apt install qemu-guest-agent
+sudo apt install qemu-guest-agent -y
 sudo systemctl start qemu-guest-agent.service
-
 
 # Install Docker
 sudo apt install docker.io -y
